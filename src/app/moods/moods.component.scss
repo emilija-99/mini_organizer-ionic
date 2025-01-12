@@ -1,0 +1,13 @@
+ul{
+    display: flex;
+    flex-direction: row;
+    row-gap: 5px;
+    list-style-type:none;
+    padding: 0%;
+}
+li{
+    text-decoration: none;
+}
+ion-label{
+    margin-bottom: 10px;
+}

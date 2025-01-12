@@ -1,0 +1,44 @@
+<ion-content>
+  @if(moodSubmited == false){
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{formattedDate}}</ion-card-title>
+      <ion-card-subtitle>{{subtitle}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <div class="desc">
+        {{content}}
+      </div>
+      <ul>
+        @for(mood of moodList; track mood){
+          <li>
+            <ion-item>
+              <div>
+                <ion-label [title]="mood.feeling">{{mood.emoji}}</ion-label>
+                <ion-checkbox [checked]="onCheck(mood)" slot="end"></ion-checkbox>
+              </div>
+            </ion-item>
+          </li>
+        }
+      </ul>
+      <ion-button (click)="openToast()">everyting is going to be okey.</ion-button>
+    </ion-card-content>
+  </ion-card>
+}@else {
+  <!-- <h1>sub</h1> -->
+  <app-mood-board [displayBoard]="showWeekBoard" [typeOfBoard]="'week'" ></app-mood-board>
+   <!-- mood-board.component.ts [show month]-->
+}
+    <ion-toast
+      position="top"
+      color="primary"
+      [message]="message"
+      [isOpen]="showMessage"
+      [duration]="5000">
+    </ion-toast>
+</ion-content>
+
+<app-mood-board [displayBoard]="showWeekBoard" [typeOfBoard]="'week'" ></app-mood-board>
+
+ <!-- mood-board.component.ts [show week] -->

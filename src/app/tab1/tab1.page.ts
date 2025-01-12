@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MoodsComponent } from '../moods/moods.component';
 
 @Component({
   selector: 'app-tab1',
