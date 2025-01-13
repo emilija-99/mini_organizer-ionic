@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonicModule } from '@ionic/angular';
 import { messageStrings, Mood, moods } from 'src/assets/mood_model';
 import { MoodBoardComponent } from "../mood-board/mood-board.component";
+import { DataStoreService } from '../service/data-store.service';
 
 @Component({
   selector: 'app-moods',
@@ -15,6 +16,7 @@ export class MoodsComponent  implements OnInit {
 
   protected moods = moods;
   public moodList:any = []
+  
   public displayBoard: boolean = false;
   public showWeekBoard = true;
   public showMonthBoard = false;
@@ -31,21 +33,24 @@ export class MoodsComponent  implements OnInit {
   public content = 'Select an emoji that best represents your mood today.';
   public showMessage = false;
   public message = ''
+  
+
   public moodSubmited = false;
 
-  constructor() { }
+  constructor(public dataService: DataStoreService) { }
 
   ngOnInit() {
    this.moodList = moods.map(obj => ({...obj, checked: false, date: null}));
   }
 
   onCheck(mood:any) {
+    console.log("onCheck Mood: ", mood);
     mood.checked = !mood.checked;
     mood.date = new Date().toLocaleDateString('en-US', this.options);
     this.message = mood.toastMessage;
 
-    // console.log("Mood", mood);
-    this.showWeekBoard = false;
+    this.dataService.setMoodBoard(mood);
+    this.showWeekBoard = true;
   }
 
   openToast() {
@@ -56,7 +61,6 @@ export class MoodsComponent  implements OnInit {
     setTimeout(() => {
       this.showMessage = false;
       // loader for preview
-      this.showWeekBoard = true;
     }, 5000);
   }
 

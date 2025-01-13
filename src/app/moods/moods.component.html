@@ -16,7 +16,7 @@
             <ion-item>
               <div>
                 <ion-label [title]="mood.feeling">{{mood.emoji}}</ion-label>
-                <ion-checkbox [checked]="onCheck(mood)" slot="end"></ion-checkbox>
+                <ion-checkbox (click)="onCheck(mood)" slot="end"></ion-checkbox>
               </div>
             </ion-item>
           </li>
@@ -26,8 +26,11 @@
     </ion-card-content>
   </ion-card>
 }@else {
+
+  <!-- FEATURE: implement dropdown or tabs for preview month or week-->
   <!-- <h1>sub</h1> -->
   <app-mood-board [displayBoard]="showWeekBoard" [typeOfBoard]="'week'" ></app-mood-board>
+  <!-- <app-mood-board [displayBoard]="showMonthBoard" [typeOfBoard]="'month'" ></app-mood-board> -->
    <!-- mood-board.component.ts [show month]-->
 }
     <ion-toast
@@ -39,6 +42,5 @@
     </ion-toast>
 </ion-content>
 
-<app-mood-board [displayBoard]="showWeekBoard" [typeOfBoard]="'week'" ></app-mood-board>
 
  <!-- mood-board.component.ts [show week] -->
