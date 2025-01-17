@@ -47,11 +47,28 @@ export class StorageService {
     return this.storage?.set(STORAGE_KEY, storedData);
   }
 
+  async getAllData(){
+    await this.storage?.get(STORAGE_KEY);
+  }
+
+  async getItem(ind: any){
+    const storedData = await this.storage?.get(STORAGE_KEY) || [];
+    return storedData[ind];
+  }
+
   async removeData(ind: any){
     const storedData = await this.storage?.get(STORAGE_KEY) || [];
     storedData.splice(ind,1);
     return this.storage?.set(STORAGE_KEY, storedData);
   }
+
+  async clearDatabase() {
+    await this.storage.clear();
+  }
+
+  
+
+  
   // NEXT: Add the following methods to the StorageService class:
   //https://www.youtube.com/watch?v=BM70fDqUo3c
 }
