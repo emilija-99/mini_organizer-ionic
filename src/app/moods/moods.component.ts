@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonicModule } from '@ionic/angular';
 import { messageStrings, Mood, moods } from 'src/assets/mood_model';
 import { MoodBoardComponent } from "../mood-board/mood-board.component";
@@ -14,6 +14,8 @@ import { DataStoreService } from '../service/data-store.service';
 })
 export class MoodsComponent  implements OnInit {
 
+  
+  protected showValue = false;
   protected moods = moods;
   public moodList:any = []
   
@@ -62,6 +64,12 @@ export class MoodsComponent  implements OnInit {
       this.showMessage = false;
       // loader for preview
     }, 5000);
+  }
+
+
+  addNew(){
+    this.moodSubmited = false;
+    this.displayBoard = false
   }
 
  

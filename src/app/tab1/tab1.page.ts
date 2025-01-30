@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MoodsComponent } from '../moods/moods.component';
 import { StorageService } from '../service/storage.service';
 import { DatabaseService } from '../service/database.service';
@@ -16,6 +16,7 @@ export class Tab1Page {
 
   public moods;
   model = { mood: '' };
+  public cliked = true;
 
   constructor(
     protected dataService: DatabaseService
@@ -31,7 +32,6 @@ export class Tab1Page {
     await this.dataService.addMood(this.model.mood);
     this.model.mood = '';
   };
-
   async removeMood(id: number){
     await this.dataService.removeMood(id);
   }
@@ -59,3 +59,8 @@ export class Tab1Page {
 
 
 // }
+
+/*
+
+
+*/

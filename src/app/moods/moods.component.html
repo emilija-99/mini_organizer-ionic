@@ -1,5 +1,5 @@
 <ion-content>
-  @if(moodSubmited == false){
+  @if(moodSubmited == false ){
   <ion-card>
     <ion-card-header>
       <ion-card-title>{{formattedDate}}</ion-card-title>
@@ -32,6 +32,10 @@
   <app-mood-board [displayBoard]="showWeekBoard" [typeOfBoard]="'week'" ></app-mood-board>
   <!-- <app-mood-board [displayBoard]="showMonthBoard" [typeOfBoard]="'month'" ></app-mood-board> -->
    <!-- mood-board.component.ts [show month]-->
+   <ion-button>
+    <ion-icon name="add" (click)="addNew()"></ion-icon>
+   </ion-button>
+
 }
     <ion-toast
       position="top"
